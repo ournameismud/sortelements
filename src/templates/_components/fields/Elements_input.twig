@@ -21,10 +21,27 @@
 {% switch field.type %}
 	{% case 'entry' %}
 	{% set elements = craft.entries() %}
-	{% set elementsSorted = craft.entries() %}
 	{% set srcName = 'Entries' %}
-	
+
+	{% case 'category' %}
+	{% set elements = craft.categories() %}
+	{% set srcName = 'Categories' %}
+
+	{% case 'asset' %}
+	{% set elements = craft.assets() %}
+	{% set srcName = 'Categories' %}
+
+	{% case 'tag' %}
+	{% set elements = craft.tags() %}
+	{% set srcName = 'Categories' %}
+
+	{% case 'user' %}
+	{% set elements = craft.users() %}
+	{% set srcName = 'Categories' %}
+
 {% endswitch %}
+
+{% set elementsSorted = clone(elements) %}
 
 {# 
 	Need to add undefined elements here (eg from value)
