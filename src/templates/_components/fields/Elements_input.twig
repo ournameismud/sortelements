@@ -29,15 +29,15 @@
 
 	{% case 'asset' %}
 	{% set elements = craft.assets() %}
-	{% set srcName = 'Categories' %}
+	{% set srcName = 'Assets' %}
 
 	{% case 'tag' %}
 	{% set elements = craft.tags() %}
-	{% set srcName = 'Categories' %}
+	{% set srcName = 'Tags' %}
 
 	{% case 'user' %}
 	{% set elements = craft.users() %}
-	{% set srcName = 'Categories' %}
+	{% set srcName = 'Users' %}
 
 {% endswitch %}
 
