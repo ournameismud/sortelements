@@ -1,0 +1,40 @@
+{
+    "name": "ournameismud/sortelements",
+    "description": "Field to sort related elements",
+    "type": "craft-plugin",
+    "version": "0.0.1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "sort elements"
+    ],
+    "support": {
+        "docs": "https://github.com/ournameismud/sortelements/blob/master/README.md",
+        "issues": "https://github.com/ournameismud/sortelements/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "@cole007",
+            "homepage": "http://ournameismud.co.uk/"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "ournameismud\\sortelements\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Sort Elements",
+        "handle": "sort-elements",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/ournameismud/sortelements/master/CHANGELOG.md",
+        "class": "ournameismud\\sortelements\\SortElements"
+    }
+}

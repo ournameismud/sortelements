@@ -1,0 +1,34 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Sort Elements plugin for Craft CMS
+ *
+ * Elements Field Settings
+ *
+ * @author    @cole007
+ * @copyright Copyright (c) 2018 @cole007
+ * @link      http://ournameismud.co.uk/
+ * @package   SortElements
+ * @since     0.0.1
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{# {% do view.registerAssetBundle("ournameismud\\sortelements\\assetbundles\\sortelements\\SortElementsAsset") %} #}
+
+{{ forms.selectField({
+    label: 'Type',
+    instructions: 'What type of element is selectable?',
+    id: 'type',
+    options: {
+	    'entry':'Entries',
+	    'category':'Categories',
+	    'asset':'Assets',
+	    'tag':'Tag',
+	    'user':'User'
+    },
+    value: field['type'],
+    name: 'type',
+    required: true})
+}}

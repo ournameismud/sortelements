@@ -1,0 +1,74 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Sort Elements plugin for Craft CMS 3.x
+ *
+ * Elements Field Input
+ *
+ * @author    @cole007
+ * @copyright Copyright (c) 2018 @cole007
+ * @link      http://ournameismud.co.uk/
+ * @package   SortElements
+ * @since     0.0.1
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% set elementType = element.className|split('\\')|last %}
+
+{% set ids = value|length ? value : [] %}
+{% switch field.type %}
+	{% case 'entry' %}
+	{% set elements = craft.entries() %}
+	{% set elementsSorted = craft.entries() %}
+	{% set srcName = 'Entries' %}
+	
+{% endswitch %}
+
+{# 
+	Need to add undefined elements here (eg from value)
+#}
+{% if elements is defined %}
+	{% set elements = elements.relatedTo( element ) %}
+	{% for item in elements if item.id not in ids %}
+		{% set ids = ids|merge([item.id]) %}
+	{% endfor %} 
+	{% if elements|length %}
+	<ul class="elementRows">
+		{% for element in elementsSorted.id( ids ).fixedOrder( true ) %}
+		<li class="elementRows-row">
+			<span class="icon move">&nbsp;</span>
+			<span class="elementRows-row-item">{{ element.title }}<!--({{ element.id }})--></span>
+			<input type="hidden" name="{{ name }}[]" value="{{ element.id }}">
+		</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<p>No {{ srcName }} currently related to this {{ elementType }}.</p>
+	{% endif %}
+{% endif %}
+<input type="hidden" id="ids" name="{{ name }}"  value="{{ value|json_encode }}" />
+{% css %}
+	.elementRows-row {
+		padding: 4px 0;
+		list-style: none;
+	}
+	.elementRows-row-item {
+		padding: 2px 0;
+		display: inline-block;		
+	}
+{% endcss %}
+{% js %}
+	var $rows = $('.elementRows');
+	new Garnish.DragSort($rows.children(), {
+        handle: '.move',
+        axis: 'y',
+        onSortChange: function() {
+            var searchIDs = $('.elementRows input[type="hidden"]').map(function(){
+            	return $(this).val();
+            }).get(); // <----
+            $('#fields-ids').val(JSON.stringify(searchIDs));
+        }
+    });
+{% endjs %}
