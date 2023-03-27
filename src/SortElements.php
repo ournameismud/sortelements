@@ -45,7 +45,7 @@ class SortElements extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '0.0.3';
+    public string $schemaVersion = '0.0.4';
 
     // Public Methods
     // =========================================================================
