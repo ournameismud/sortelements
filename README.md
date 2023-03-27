@@ -1,4 +1,4 @@
-# Sort Elements plugin for Craft CMS 3.x
+# Sort Elements plugin for Craft CMS 3.x & 4.x
 
 Field to sort related elements that have already been defined.
 
