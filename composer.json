@@ -2,7 +2,7 @@
     "name": "ournameismud/sortelements",
     "description": "Field to sort related elements",
     "type": "craft-plugin",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "keywords": [
         "craft",
         "cms",
