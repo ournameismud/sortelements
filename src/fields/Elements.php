@@ -52,7 +52,7 @@ class Elements extends Field
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = parent::rules();
         $rules = array_merge($rules, [
@@ -72,7 +72,7 @@ class Elements extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function normalizeValue(mixed $value, ElementInterface $element = null): mixed 
     {        
         if (\is_string($value) && !empty($value)) {
             $value = Json::decodeIfJson($value);
@@ -83,7 +83,7 @@ class Elements extends Field
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ElementInterface $element = null)
+    public function serializeValue(mixed $value, ElementInterface $element = null): mixed
     {
         return parent::serializeValue($value, $element);
     }
@@ -91,7 +91,7 @@ class Elements extends Field
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): string
     {
         // Render the settings template
         return Craft::$app->getView()->renderTemplate(
