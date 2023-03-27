@@ -48,8 +48,10 @@
 #}
 {% if elements is defined %}
 	{% set elements = elements.relatedTo( element ) %}
-	{% for item in elements if item.id not in ids %}
-		{% set ids = ids|merge([item.id]) %}
+	{% for item in elements %}
+		{% if item.id not in ids %}
+			{% set ids = ids|merge([item.id]) %}
+		{% endif %}
 	{% endfor %} 
 	{% if elements|length %}
 	<ul class="elementRows">
